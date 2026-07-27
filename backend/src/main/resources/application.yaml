@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: api
+  datasource:
+    url: jdbc:postgresql://db:5432/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  sql:
+    init:
+      mode: always
+  jpa:
+    hibernate:
+      ddl-auto: none
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.results: TRACE
+    org.springframework.web: DEBUG
