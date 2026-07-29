@@ -50,40 +50,51 @@ public class UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
-    private User createUser(UserRegistrationRequest request) {
+    private User createUser(UserRegistrationRequest request, RoleType type) {
         String email = request.email();
         if (userRepository.existsUserByEmail(email)) {
             throw new DuplicateResourceException("Email already exists");
         }
 
-        return new User(
+        User user = new User(
                 email,
                 passwordEncoder.encode(request.password()),
                 request.firstName(),
                 request.lastName()
         );
-    }
-
-    public User addStudent(UserRegistrationRequest request) {
-        User user = createUser(request);
-        Role role = roleRepository.findRoleByType(RoleType.STUDENT)
+        Role role = roleRepository.findRoleByType(type)
                 .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
         user.addRole(role);
 
+        return user;
+    }
+
+    public User addStudent(UserRegistrationRequest request) {
+        User user = createUser(request, RoleType.STUDENT);
         return userRepository.save(user);
     }
 
-    @Transactional
-    public void addRoleToUser(int userId, int roleId) {
-        User user = userRepository
-                .findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found"));
-
-        Role role = roleRepository
-                .findById(roleId)
-                .orElseThrow(() -> new EntityNotFoundException("Role not found"));
-
-        user.addRole(role);
-        userRepository.save(user);
+    public User addInstructor(UserRegistrationRequest request) {
+        User user = createUser(request, RoleType.INSTRUCTOR);
+        return userRepository.save(user);
     }
+
+    public User addAdmin(UserRegistrationRequest request) {
+        User user = createUser(request, RoleType.ADMIN);
+        return userRepository.save(user);
+    }
+
+//    @Transactional
+//    public void addRoleToUser(int userId, int roleId) {
+//        User user = userRepository
+//                .findById(userId)
+//                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+//
+//        Role role = roleRepository
+//                .findById(roleId)
+//                .orElseThrow(() -> new EntityNotFoundException("Role not found"));
+//
+//        user.addRole(role);
+//        userRepository.save(user);
+//    }
 }
