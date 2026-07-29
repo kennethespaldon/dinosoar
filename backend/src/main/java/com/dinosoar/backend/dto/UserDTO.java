@@ -3,12 +3,12 @@ package com.dinosoar.backend.dto;
 
 import com.dinosoar.backend.enums.RoleType;
 
-import java.util.List;
+import java.util.Set;
 
 public record UserDTO (
         Integer id,
         String email,
         String firstName,
         String lastName,
-        List<RoleType> roles
+        Set<RoleType> roles
 ) {}

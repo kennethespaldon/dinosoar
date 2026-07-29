@@ -20,7 +20,7 @@ public class UserDTOMapper implements Function<User, UserDTO> {
                 user.getRoles()
                         .stream()
                         .map(Role::getType)
-                        .collect(Collectors.toList())
+                        .collect(Collectors.toSet())
         );
     }
 }

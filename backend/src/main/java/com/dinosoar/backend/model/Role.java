@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,6 +24,14 @@ public class Role {
 
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
+
+    public Role() {}
+
+    public Role(int id, RoleType type) {
+        this.id = id;
+        this.type = type;
+        this.users = new HashSet<>();
+    }
 
     public void addUser(User user) {
         this.users.add(user);
