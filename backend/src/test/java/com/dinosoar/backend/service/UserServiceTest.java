@@ -1,7 +1,5 @@
 package com.dinosoar.backend.service;
 
-import com.dinosoar.backend.dto.UserDTO;
-import com.dinosoar.backend.dto.UserDTOMapper;
 import com.dinosoar.backend.dto.UserRegistrationRequest;
 import com.dinosoar.backend.enums.RoleType;
 import com.dinosoar.backend.exception.DuplicateResourceException;
@@ -18,11 +16,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -41,16 +37,13 @@ public class UserServiceTest {
     private RoleRepository roleRepository;
 
     @Mock
-    private UserDTOMapper userDTOMapper;
-
-    @Mock
     private PasswordEncoder passwordEncoder;
 
     private UserService userService;
 
     @BeforeEach
     void setUp() {
-        userService = new UserService(userRepository, roleRepository, userDTOMapper, passwordEncoder);
+        userService = new UserService(userRepository, roleRepository, passwordEncoder);
     }
 
     private UserRegistrationRequest createTestRegistrationRequest() {
@@ -141,44 +134,28 @@ public class UserServiceTest {
     void getAllUsers_WithNoUsers_ReturnsEmptyList() {
         when(userRepository.findAll()).thenReturn(List.of());
 
-        List<UserDTO> fetchedUsers = userService.getAllUsers();
+        List<User> fetchedUsers = userService.getAllUsers();
 
         assertThat(fetchedUsers).isEmpty();
         verify(userRepository).findAll();
-        verifyNoInteractions(userDTOMapper);
     }
 
     @Test
-    void getAllUsers_WithOneUser_ReturnsListWithOneUserDTO() {
+    void getAllUsers_WithOneUser_ReturnsListWithOneUser() {
         User user = new User("user1@email.com", "password", "user", "one");
         user.setId(1);
         user.addRole(new Role(1, RoleType.INSTRUCTOR));
 
         List<User> users = List.of(user);
-
-        UserDTO userDTO = new UserDTO(
-                user.getId(),
-                user.getEmail(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getRoles()
-                        .stream()
-                        .map(Role::getType)
-                        .collect(Collectors.toSet())
-        );
-
         when(userRepository.findAll()).thenReturn(users);
-        when(userDTOMapper.apply(user)).thenReturn(userDTO);
+        List<User> fetchedUsers = userService.getAllUsers();
 
-        List<UserDTO> fetchedUsers = userService.getAllUsers();
-
-        assertThat(fetchedUsers).containsExactly(userDTO);
+        assertThat(fetchedUsers).containsExactly(user);
         verify(userRepository).findAll();
-        verify(userDTOMapper).apply(user);
     }
 
     @Test
-    void getAllUsers_WithMultipleUsers_ReturnsListOfUserDTOs() {
+    void getAllUsers_WithMultipleUsers_ReturnsListOfUsers() {
         User user = new User("user1@email.com", "password", "user", "one");
         user.setId(1);
         user.addRole(new Role(1, RoleType.INSTRUCTOR));
@@ -188,39 +165,11 @@ public class UserServiceTest {
         user2.addRole(new Role(2, RoleType.STUDENT));
 
         List<User> users = List.of(user, user2);
-
-        UserDTO userDTO = new UserDTO(
-                user.getId(),
-                user.getEmail(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getRoles()
-                        .stream()
-                        .map(Role::getType)
-                        .collect(Collectors.toSet())
-        );
-
-        UserDTO userDTO2 = new UserDTO(
-                user2.getId(),
-                user2.getEmail(),
-                user2.getFirstName(),
-                user2.getLastName(),
-                user2.getRoles()
-                        .stream()
-                        .map(Role::getType)
-                        .collect(Collectors.toSet())
-        );
-
         when(userRepository.findAll()).thenReturn(users);
-        when(userDTOMapper.apply(user)).thenReturn(userDTO);
-        when(userDTOMapper.apply(user2)).thenReturn(userDTO2);
+        List<User> fetchedUsers = userService.getAllUsers();
 
-        List<UserDTO> fetchedUsers = userService.getAllUsers();
-
-        assertThat(fetchedUsers).containsExactly(userDTO, userDTO2);
+        assertThat(fetchedUsers).containsExactly(user, user2);
         verify(userRepository).findAll();
-        verify(userDTOMapper).apply(user);
-        verify(userDTOMapper).apply(user2);
     }
 
     @Test
@@ -231,25 +180,12 @@ public class UserServiceTest {
         Role role = new Role(1, type);
         user.addRole(role);
 
-        UserDTO userDTO = new UserDTO(
-                user.getId(),
-                user.getEmail(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getRoles()
-                        .stream()
-                        .map(Role::getType)
-                        .collect(Collectors.toSet())
-        );
-
         when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
-        when(userDTOMapper.apply(user)).thenReturn(userDTO);
 
-        UserDTO fetchedUser = userService.getUser(user.getId());
+        User fetchedUser = userService.getUser(user.getId());
 
-        assertEquals(userDTO, fetchedUser);
+        assertEquals(user, fetchedUser);
         verify(userRepository).findById(user.getId());
-        verify(userDTOMapper).apply(user);
     }
 
     @Test
@@ -260,6 +196,5 @@ public class UserServiceTest {
                 .isInstanceOf(ResourceNotFoundException.class)
                 .hasMessage("User not found");
         verify(userRepository).findById(userId);
-        verifyNoInteractions(userDTOMapper);
     }
 }

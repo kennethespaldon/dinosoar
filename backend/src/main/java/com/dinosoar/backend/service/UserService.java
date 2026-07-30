@@ -24,29 +24,22 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final UserDTOMapper userDTOMapper;
     PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, UserDTOMapper userDTOMapper, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        this.userDTOMapper = userDTOMapper;
         this.passwordEncoder = passwordEncoder;
     }
 
-    public List<UserDTO> getAllUsers() {
-        return userRepository
-                .findAll()
-                .stream()
-                .map(userDTOMapper)
-                .toList();
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
-    public UserDTO getUser(Integer id) {
+    public User getUser(Integer id) {
         return userRepository
                 .findById(id)
-                .map(userDTOMapper)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
