@@ -2,6 +2,7 @@ package com.dinosoar.backend.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -16,5 +17,10 @@ public class ApiExceptionHandler {
     @ExceptionHandler(value = DuplicateResourceException.class)
     public ProblemDetail handleDuplicateResourceException(DuplicateResourceException e) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.getMessage());
+    }
+
+    @ExceptionHandler(value = UsernameNotFoundException.class)
+    public ProblemDetail handleUsernameNotFoundException() {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, "Invalid email or password");
     }
 }
