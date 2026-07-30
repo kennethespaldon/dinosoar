@@ -1,7 +1,9 @@
 package com.dinosoar.backend.config;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -10,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
@@ -24,6 +27,13 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/**").hasAnyRole("STUDENT", "INSTRUCTOR", "ADMIN")
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/api/auth/logout")
+                        .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                        .deleteCookies("JSESSIONID")
                 )
                 .formLogin(Customizer.withDefaults());
 

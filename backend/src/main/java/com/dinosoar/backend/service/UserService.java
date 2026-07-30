@@ -1,8 +1,6 @@
 package com.dinosoar.backend.service;
 
 import com.dinosoar.backend.enums.RoleType;
-import com.dinosoar.backend.dto.UserDTO;
-import com.dinosoar.backend.dto.UserDTOMapper;
 import com.dinosoar.backend.dto.UserRegistrationRequest;
 import com.dinosoar.backend.exception.DuplicateResourceException;
 import com.dinosoar.backend.exception.ResourceNotFoundException;
@@ -10,7 +8,6 @@ import com.dinosoar.backend.model.Role;
 import com.dinosoar.backend.model.User;
 import com.dinosoar.backend.repository.RoleRepository;
 import com.dinosoar.backend.repository.UserRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
