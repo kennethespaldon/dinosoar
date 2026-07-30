@@ -69,16 +69,19 @@ public class UserService {
         return user;
     }
 
+    @Transactional
     public User addStudent(UserRegistrationRequest request) {
         User user = createUser(request, RoleType.STUDENT);
         return userRepository.save(user);
     }
 
+    @Transactional
     public User addInstructor(UserRegistrationRequest request) {
         User user = createUser(request, RoleType.INSTRUCTOR);
         return userRepository.save(user);
     }
 
+    @Transactional
     public User addAdmin(UserRegistrationRequest request) {
         User user = createUser(request, RoleType.ADMIN);
         return userRepository.save(user);
