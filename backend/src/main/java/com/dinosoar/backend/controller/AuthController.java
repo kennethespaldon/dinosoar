@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -72,6 +73,10 @@ public class AuthController {
 
     @GetMapping("/current-user")
     public ResponseEntity<UserDTO> currentUser(@AuthenticationPrincipal User user) {
+        if (user == null) {
+            return ResponseEntity.ok(null);
+        }
+
         return ResponseEntity.ok(userDTOMapper.apply(user));
     }
 
