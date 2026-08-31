@@ -10,5 +10,6 @@ public record UserDTO (
         String email,
         String firstName,
         String lastName,
-        Set<RoleType> roles
+        Set<RoleType> roles,
+        String profileImageId
 ) {}
