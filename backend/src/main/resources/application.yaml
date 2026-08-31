@@ -2,7 +2,7 @@ spring:
   application:
     name: api
   datasource:
-    url: jdbc:postgresql://db:5432/${POSTGRES_DB}
+    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB}
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
   sql:
@@ -11,6 +11,13 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+
+aws:
+  region: us-west-1
+  s3:
+    buckets:
+      dinosoar: fs-kenneth-dinosoar-test-v2
+
 logging:
   level:
     org.hibernate.SQL: DEBUG
