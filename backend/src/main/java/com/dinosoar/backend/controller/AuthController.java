@@ -2,12 +2,12 @@ package com.dinosoar.backend.controller;
 
 import com.dinosoar.backend.dto.*;
 import com.dinosoar.backend.model.User;
+import com.dinosoar.backend.service.AccessCodeService;
 import com.dinosoar.backend.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,6 +20,8 @@ import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.util.Random;
+
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -28,6 +30,7 @@ public class AuthController {
     private final AuthenticationManager authManager;
     private final UserService userService;
     private final UserDTOMapper userDTOMapper;
+    private final AccessCodeService accessCodeService;
 
     private void persistAuthentication(Authentication auth, HttpServletRequest httpRequest) {
         SecurityContext context = SecurityContextHolder.createEmptyContext();
@@ -83,5 +86,13 @@ public class AuthController {
     @GetMapping("/csrf-token")
     public CsrfToken csrfToken(CsrfToken csrfToken) {
         return csrfToken;
+    }
+
+    @PostMapping("/access-code")
+    public String generateAccessCode() {
+        Random rand = new Random();
+        String code = String.format("%09d", rand.nextInt(999999999));
+        accessCodeService.save(code);
+        return code;
     }
 }
