@@ -29,6 +29,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RoleService roleService;
+    private final AccessCodeService accessCodeService;
     private final S3Service s3Service;
     private final S3Buckets s3Buckets;
 
@@ -43,6 +44,12 @@ public class UserService {
     }
 
     private User createUser(UserRegistrationRequest request, RoleType type) {
+        String accessCode = request.accessCode();
+        if (!accessCodeService.checkIfCodeExists(accessCode)) {
+            throw new ResourceNotFoundException("Invalid access code");
+        }
+        accessCodeService.delete(accessCode);
+
         String email = request.email();
         if (userRepository.existsUserByEmail(email)) {
             throw new DuplicateResourceException("Email already exists");
