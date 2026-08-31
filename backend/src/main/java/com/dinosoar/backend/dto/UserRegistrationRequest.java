@@ -16,5 +16,8 @@ public record UserRegistrationRequest (
         String firstName,
 
         @NotBlank(message = "Last name is required")
-        String lastName
+        String lastName,
+
+        @NotBlank(message = "Access code is required")
+        String accessCode
 ) {}
