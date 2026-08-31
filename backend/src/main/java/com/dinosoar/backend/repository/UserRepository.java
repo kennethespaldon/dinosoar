@@ -2,14 +2,16 @@ package com.dinosoar.backend.repository;
 
 import com.dinosoar.backend.model.User;
 import org.jspecify.annotations.NullMarked;
-import org.springframework.data.jpa.repository.EntityGraph;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
+
+    Optional<User> findUserById(int id);
 
     @NullMarked
     List<User> findAll();
@@ -18,4 +20,13 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     User findUserByEmail(String email);
 
     boolean existsUserByEmail(String email);
+    boolean existsUserById(int id);
+
+    @Modifying
+    @NativeQuery("""
+        UPDATE users
+        SET profile_image_id = ?
+        WHERE id = ?
+     """)
+    void uploadCustomerProfileImageId(String profileImageId, Integer userId);
 }
