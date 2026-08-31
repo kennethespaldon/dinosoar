@@ -3,11 +3,12 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS roles;
 
 CREATE TABLE users (
-    id          INT             GENERATED ALWAYS AS IDENTITY,
-    email       VARCHAR(255)    UNIQUE NOT NULL,
-    password    VARCHAR(255)    NOT NULL,
-    first_name  VARCHAR(255)    NOT NULL,
-    last_name   VARCHAR(255)    NOT NULL,
+    id               INT             GENERATED ALWAYS AS IDENTITY,
+    email            VARCHAR(255)    UNIQUE NOT NULL,
+    password         VARCHAR(255)    NOT NULL,
+    first_name       VARCHAR(255)    NOT NULL,
+    last_name        VARCHAR(255)    NOT NULL,
+    profile_image_id VARCHAR(36)     UNIQUE,
 
     CONSTRAINT pk_users
         PRIMARY KEY (id)
@@ -37,4 +38,8 @@ CREATE TABLE user_roles (
 
     CONSTRAINT pk_user_roles
         PRIMARY KEY (user_id, role_id)
+);
+
+CREATE TABLE access_codes (
+    code    VARCHAR(9)     PRIMARY KEY
 );
