@@ -1,0 +1,40 @@
+.text-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: var(--radius-xs);
+    outline: 1px solid;
+    padding: 0 0 var(--ref-space-75) 0;
+
+    width: 100%;
+}
+
+.text-input {
+    margin-top: var(--ref-space-50);
+    font-size: 16px;
+    border-radius: var(--radius-xs);
+    background-color: transparent;
+    color: var(--color-on-surface);
+    padding: 0 var(--ref-space-75);
+    border: none;
+}
+
+.text-input-wrapper:focus-within {
+    outline: 2px solid var(--color-primary);
+}
+
+.text-input:focus {
+    outline: none;
+}
+
+.text-input-label {
+    position: relative;
+    top: var(--ref-space-25);
+    font-size: 12px;
+    background-color: transparent;
+    padding: var(--ref-space-25) 0 0 var(--ref-space-75);
+}
+
+div:has(input:focus) > label {
+  color: var(--color-primary);
+}
