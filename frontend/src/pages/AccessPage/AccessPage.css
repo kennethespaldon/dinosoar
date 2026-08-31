@@ -1,0 +1,29 @@
+.access-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(var(--color-surface) 20%, 90%, var(--color-primary));
+}
+
+.access-page-login-title {
+    position: absolute;
+    top: var(--ref-space-600);
+    font-size: 64px;
+}
+
+.access-page-login-title-mobile {
+    display: none;
+}
+
+.access-page-span {
+    font-style: italic;
+    color: var(--color-primary);
+}
+
+@media only screen and (max-width: 640px) {
+    .hide-on-mobile {
+        display: none;
+    }
+}
