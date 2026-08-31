@@ -1,0 +1,70 @@
+.access-form-wrapper {
+    backdrop-filter: blur(32px);
+    background-color: #FFFFFF;
+    padding: var(--ref-space-150) var(--ref-space-200) var(--ref-space-200);
+    border-radius: calc(var(--radius-sm) + var(--ref-space-200));
+    box-shadow: 2px 2px 12px 1px rgb(0 0 0 / 15%);
+    flex-basis: 500px;
+}
+
+.access-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--ref-space-100);
+    margin-top: var(--ref-space-100);
+}
+
+.access-form-title {
+    margin-bottom: var(--ref-space-150);
+    font-size: 36px;
+}
+
+button {
+    font-size: 18px;
+    font-family: Montserrat;
+    font-weight: 500;
+    padding: var(--ref-space-125);
+    width: 100%;
+    color: var(--color-on-primary);
+    border-radius: var(--radius-xs);
+    border: none;
+    transition: opacity .4s;
+}
+
+.primary-btn {
+    background-color: var(--color-primary);
+}
+
+.or-label {
+    text-align: center;
+    margin: var(--ref-space-50) 0;
+}
+
+.secondary-btn {
+    background-color: var(--color-secondary);
+}
+
+button:hover {
+    opacity: 0.80;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 640px) {
+    .access-form-wrapper {
+        max-width: 400px;
+    }
+
+    .access-form-title {
+        display: none;
+    }
+
+    .or-label {
+        display: none;
+    }
+
+    .secondary-btn {
+        margin-top: var(--ref-space-100);
+    }
+}
