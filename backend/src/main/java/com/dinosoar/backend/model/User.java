@@ -34,6 +34,9 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String lastName;
 
+    @Column
+    private String profileImageId;
+
     @ManyToMany
     @JoinTable(
             name = "user_roles",
@@ -50,6 +53,12 @@ public class User implements UserDetails {
         this.firstName = firstName;
         this.lastName = lastName;
         this.roles = new HashSet<>();
+    }
+
+    public User(String email, String password, String firstName, String lastName, String profileImageId) {
+        this(email, password, firstName, lastName);
+        this.roles = new HashSet<>();
+        this.profileImageId = profileImageId;
     }
 
     public void addRole(Role role) {
