@@ -1,8 +1,7 @@
-package com.dinosoar.backend.controller;
+package com.dinosoar.backend.user;
 
-import com.dinosoar.backend.dto.UserDTO;
-import com.dinosoar.backend.dto.UserDTOMapper;
-import com.dinosoar.backend.service.UserService;
+import com.dinosoar.backend.user.dto.UserDTO;
+import com.dinosoar.backend.user.dto.UserDTOMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -28,13 +27,13 @@ public class UserController {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE
     )
     public void uploadUserProfileImage(
-            @PathVariable Integer userId,
+            @PathVariable Long userId,
             @RequestParam("file") MultipartFile file) {
         userService.uploadUserProfileImage(userId, file);
     }
 
     @GetMapping("{userId}/profile-image")
-    public byte[] getUserProfileImage(@PathVariable Integer userId) {
+    public byte[] getUserProfileImage(@PathVariable Long userId) {
         return userService.getUserProfileImage(userId);
     }
 

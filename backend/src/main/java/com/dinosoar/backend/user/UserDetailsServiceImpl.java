@@ -1,7 +1,5 @@
-package com.dinosoar.backend.service;
+package com.dinosoar.backend.user;
 
-import com.dinosoar.backend.model.User;
-import com.dinosoar.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,17 +1,15 @@
-package com.dinosoar.backend.service;
+package com.dinosoar.backend.user;
 
 import com.dinosoar.backend.enums.RoleType;
-import com.dinosoar.backend.dto.UserRegistrationRequest;
+import com.dinosoar.backend.user.dto.UserRegistrationRequest;
 import com.dinosoar.backend.exception.DuplicateResourceException;
 import com.dinosoar.backend.exception.ResourceNotFoundException;
-import com.dinosoar.backend.model.Role;
-import com.dinosoar.backend.model.User;
-import com.dinosoar.backend.repository.RoleRepository;
-import com.dinosoar.backend.repository.UserRepository;
+import com.dinosoar.backend.user.role.Role;
+import com.dinosoar.backend.auth.accesscode.AccessCodeService;
+import com.dinosoar.backend.user.role.RoleService;
 import com.dinosoar.backend.s3.S3Buckets;
 import com.dinosoar.backend.s3.S3Service;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +35,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUser(Integer id) {
+    public User getUser(Long id) {
         return userRepository
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
@@ -85,7 +83,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public void uploadUserProfileImage(Integer userId, MultipartFile file) {
+    public void uploadUserProfileImage(Long userId, MultipartFile file) {
         if (userRepository.existsUserById(userId)) {
             throw new ResourceNotFoundException("User with id " + userId + " not found");
         }
@@ -104,7 +102,7 @@ public class UserService {
         userRepository.uploadCustomerProfileImageId(profileImageId, userId);
     }
 
-    public byte[] getUserProfileImage(Integer userId) {
+    public byte[] getUserProfileImage(Long userId) {
         User user = userRepository.findUserById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User with id " + userId + " not found"));
 

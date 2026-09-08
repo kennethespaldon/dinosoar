@@ -1,9 +1,13 @@
-package com.dinosoar.backend.controller;
+package com.dinosoar.backend.auth;
 
-import com.dinosoar.backend.dto.*;
-import com.dinosoar.backend.model.User;
-import com.dinosoar.backend.service.AccessCodeService;
-import com.dinosoar.backend.service.UserService;
+import com.dinosoar.backend.auth.dto.LoginRequest;
+import com.dinosoar.backend.auth.dto.LoginResponse;
+import com.dinosoar.backend.user.dto.UserDTO;
+import com.dinosoar.backend.user.dto.UserDTOMapper;
+import com.dinosoar.backend.user.dto.UserRegistrationRequest;
+import com.dinosoar.backend.user.User;
+import com.dinosoar.backend.auth.accesscode.AccessCodeService;
+import com.dinosoar.backend.user.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;

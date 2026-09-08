@@ -1,7 +1,5 @@
-package com.dinosoar.backend.service;
+package com.dinosoar.backend.auth.accesscode;
 
-import com.dinosoar.backend.model.AccessCode;
-import com.dinosoar.backend.repository.AccessCodeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

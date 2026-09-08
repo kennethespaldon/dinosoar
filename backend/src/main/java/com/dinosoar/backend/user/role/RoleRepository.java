@@ -1,7 +1,6 @@
-package com.dinosoar.backend.repository;
+package com.dinosoar.backend.user.role;
 
 import com.dinosoar.backend.enums.RoleType;
-import com.dinosoar.backend.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

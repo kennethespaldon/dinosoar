@@ -1,7 +1,9 @@
-package com.dinosoar.backend.model;
+package com.dinosoar.backend.user.role;
 
 import com.dinosoar.backend.enums.RoleType;
+import com.dinosoar.backend.user.User;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,7 +25,7 @@ public class Role {
     private RoleType type;
 
     @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    private Set<@Valid User> users;
 
     public Role() {}
 

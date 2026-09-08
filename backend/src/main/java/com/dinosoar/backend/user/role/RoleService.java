@@ -1,9 +1,7 @@
-package com.dinosoar.backend.service;
+package com.dinosoar.backend.user.role;
 
 import com.dinosoar.backend.enums.RoleType;
 import com.dinosoar.backend.exception.ResourceNotFoundException;
-import com.dinosoar.backend.model.Role;
-import com.dinosoar.backend.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

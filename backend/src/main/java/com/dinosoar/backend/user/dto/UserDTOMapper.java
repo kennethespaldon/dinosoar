@@ -1,13 +1,13 @@
-package com.dinosoar.backend.dto;
+package com.dinosoar.backend.user.dto;
 
-import com.dinosoar.backend.model.Role;
-import com.dinosoar.backend.model.User;
-import org.springframework.stereotype.Service;
+import com.dinosoar.backend.user.role.Role;
+import com.dinosoar.backend.user.User;
+import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-@Service
+@Component
 public class UserDTOMapper implements Function<User, UserDTO> {
 
     @Override

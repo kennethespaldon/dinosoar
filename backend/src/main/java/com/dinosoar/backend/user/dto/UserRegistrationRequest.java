@@ -1,4 +1,4 @@
-package com.dinosoar.backend.dto;
+package com.dinosoar.backend.user.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

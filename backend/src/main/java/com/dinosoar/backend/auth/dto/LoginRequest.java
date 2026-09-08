@@ -1,4 +1,4 @@
-package com.dinosoar.backend.dto;
+package com.dinosoar.backend.auth.dto;
 
 public record LoginRequest (
         String email,

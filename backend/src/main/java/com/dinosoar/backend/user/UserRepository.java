@@ -1,6 +1,5 @@
-package com.dinosoar.backend.repository;
+package com.dinosoar.backend.user;
 
-import com.dinosoar.backend.model.User;
 import org.jspecify.annotations.NullMarked;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
@@ -11,7 +10,8 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    Optional<User> findUserById(int id);
+    Optional<User> findUserById(Long id);
+    Optional<User> findById(Long id);
 
     @NullMarked
     List<User> findAll();
@@ -20,7 +20,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     User findUserByEmail(String email);
 
     boolean existsUserByEmail(String email);
-    boolean existsUserById(int id);
+    boolean existsUserById(Long id);
 
     @Modifying
     @NativeQuery("""
@@ -28,5 +28,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
         SET profile_image_id = ?
         WHERE id = ?
      """)
-    void uploadCustomerProfileImageId(String profileImageId, Integer userId);
+    void uploadCustomerProfileImageId(String profileImageId, Long userId);
 }

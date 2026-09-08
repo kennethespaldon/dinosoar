@@ -1,4 +1,4 @@
-package com.dinosoar.backend.model;
+package com.dinosoar.backend.auth.accesscode;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
