@@ -1,20 +1,20 @@
 services:
-  api:
-    build: .
-    ports:
-      - 8080:8080
-    environment:
-      POSTGRES_DB: exampledb
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+#  api:
+#    build: .
+#    ports:
+#      - 8080:8080
+#    environment:
+#      POSTGRES_DB: ${POSTGRES_DB}
+#      POSTGRES_USER: ${POSTGRES_USER}
+#      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
   db:
     image: postgres
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DB: exampledb
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - ./src/main/resources/00-schema.sql:/docker-entrypoint-initdb.d/00-schema.sql
       - ./src/main/resources/01-data.sql:/docker-entrypoint-initdb.d/01-data.sql

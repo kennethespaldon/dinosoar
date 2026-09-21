@@ -2,7 +2,7 @@ spring:
   application:
     name: api
   datasource:
-    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB}
+    url: ${POSTGRES_URL}
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
   sql:
@@ -16,7 +16,7 @@ aws:
   region: us-west-1
   s3:
     buckets:
-      dinosoar: fs-kenneth-dinosoar-test-v2
+      dinosoar: ${AWS_S3_BUCKET_NAME}
 
 logging:
   level:
