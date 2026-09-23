@@ -1,0 +1,269 @@
+.home-page {
+    display: flex;
+}
+
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    /* Might need to change the below. Sizing is good though. */
+    flex-basis: calc(var(--ref-space-900) * 2.25);
+    border-right: 4px solid black;
+    padding: var(--ref-space-100);
+}
+
+.main-menu-header {
+    font-size: var(--typescale-headline-medium-size);
+    text-align: center;
+    color: var(--color-primary);
+    text-shadow: 2px 2px 0 black, 3px 3px 0 var(--color-primary), 4px 4px 0 black;
+    font-weight: var(--font-weight-bold);
+}
+
+.main-menu-tabs {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: var(--ref-space-100);
+    padding: var(--ref-space-150) var(--ref-space-100) var(--ref-space-100);
+}
+
+.main-menu-tab {
+    background-color: var(--color-on-primary-container);
+    color: white;
+    border: 4px solid black;
+    box-shadow: 4px 6px 0 0 black;
+    border-radius: var(--radius-lg-alt);
+    padding: var(--ref-space-100) var(--ref-space-200);
+    font-size: var(--typescale-label-medium-size);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--typescale-label-medium-line-height);
+
+    display: flex;
+    align-items: center;
+    gap: var(--ref-space-150);
+}
+
+.main-menu-tab:hover {
+    cursor: pointer;
+}
+
+.main-menu-tab:active {
+    position: relative;
+    top: 6px;
+    left: 6px;
+    box-shadow: none;
+}
+
+.main-menu-tab-selected:active {
+    position: relative;
+    top: 6px;
+    left: 6px;
+    box-shadow: none;
+}
+
+.main-menu-tab:not(.main-menu-tab-selected):hover {
+    background-color: var(--color-on-primary-container-hover);
+}
+
+.main-menu-tab-selected {
+    background-color: var(--color-primary);
+    position: relative;
+    top: 4px;
+    left: 4px;
+    box-shadow: 1px 2px 0 0 black;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.main-content-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--typescale-title-large-size);
+
+    width: 100%;
+    height: 100%;
+}
+
+.main-content-header {
+    text-align: center;
+    padding: var(--ref-space-50);
+}
+
+.flights {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.flight-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ref-space-100);
+}
+
+.flight-feedback-wrapper {
+    flex-grow: 1;
+}
+
+.flight-feedback {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ref-space-100);
+    justify-content: center;
+}
+
+.flight-list {
+    padding: var(--ref-space-50) var(--ref-space-600);
+}
+
+.flight-list-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.flight-list-row {
+    --comp-flight-list-col-date-width: 6rem;
+    --comp-flight-list-col-student-width: 10rem;
+    --comp-flight-list-col-aircraft-width: 4rem;
+    --comp-flight-list-col-cross-country-width: 7rem;
+    --comp-flight-list-col-night-flight-width: 6.5rem;
+    --comp-flight-list-col-night-flight-time-width: 6.5rem;
+
+    display: flex;
+    justify-content: space-around;
+    padding: var(--ref-space-50) var(--ref-space-200);
+}
+
+.flight-list-row:not(.flight-list-row-header):hover {
+    cursor: pointer;
+    background-color: var(--color-primary-container);
+}
+
+.flight-list-col {
+    text-align: center;
+}
+
+.flight-list-col-date {
+    flex-basis: var(--comp-flight-list-col-date-width);
+}
+
+.flight-list-col-student {
+    flex-basis: var(--comp-flight-list-col-student-width);
+}
+
+.flight-list-col-aircraft {
+    flex-basis: var(--comp-flight-list-col-aircraft-width);
+}
+
+.flight-list-col-cross-country {
+    flex-basis: var(--comp-flight-list-col-cross-country-width);
+}
+
+.flight-list-col-night-flight {
+    flex-basis: var(--comp-flight-list-col-night-flight-width);
+}
+
+.flight-list-col-flight-time {
+    flex-basis: var(--comp-flight-list-col-night-flight-time-width);
+}
+
+.flight-menu-tab {
+    text-align: center;
+    padding: var(--ref-space-50) var(--ref-space-150);
+}
+
+.flight-menu-tab:hover {
+    cursor: pointer;
+}
+
+.flight-menu-tab-selected {
+    background-color: #4F8787;
+}
+
+.add-flight-form-wrapper {
+    position: absolute;
+    z-index: 10;
+    backdrop-filter: blur(32px);
+    inset: 0;
+    padding: var(--ref-space-100) var(--ref-space-200);
+
+    display: flex;
+}
+
+.add-flight-menu {
+    /* Might need to change the units below instead of using calc. Sizing is good though.*/
+    flex-basis: calc(var(--ref-space-700) * 2);
+    padding: var(--ref-space-25) var(--ref-space-100);
+}
+
+.add-flight-form {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    padding: var(--ref-space-25) var(--ref-space-300);
+    /*background-color: darkgrey;*/
+    overflow-y: auto;
+    scrollbar-color: var(--color-secondary) transparent;
+    /*scrollbar-gutter: stable;*/
+}
+
+.add-flight-form-focus {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ref-space-100);
+    flex-grow: 1;
+    padding: var(--ref-space-25);
+}
+
+/*.action-items {*/
+/*    padding-left: var(--ref-space-100);*/
+/*}*/
+
+.action-item {
+   margin-top: var(--ref-space-50);
+}
+
+.add-action-item-button {
+    margin-top: var(--ref-space-75);
+}
+
+.action-items-wrapper-button {
+    margin-top: auto;
+}
+
+.add-flight-button {
+    margin-top: auto;
+}
+
+.add-flight-form-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: auto;
+}
+
+.add-flight-form-buttons > button {
+    flex: 0;
+    padding: 24px 64px;
+}
+
+.add-flight-form-cancel-button {
+    background-color: var(--color-error);
+}
+
+.add-flight-form-add-button {
+    background-color: var(--color-primary);
+}
+
+.add-flight-button:hover {
+    cursor: pointer;
+    background-color: #4F8787;
+}

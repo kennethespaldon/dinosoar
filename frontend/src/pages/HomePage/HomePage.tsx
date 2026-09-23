@@ -1,10 +1,11 @@
-import LogoutButton from '../components/LogoutButton.tsx';
+import LogoutButton from '../../components/LogoutButton.tsx';
 import { Navigate } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import { useState } from "react";
-import Menu from "../components/Menu.tsx";
-import type { User } from "../types/user.ts";
-import MainContent from "../components/MainContent.tsx";
+import type { User } from "../../types/user.ts";
+import MainContent from "./MainContent.tsx";
+import './HomePage.css';
+import Menu from "../../components/Menu/Menu.tsx";
 
 function HomePage() {
     const [ selectedTab, setSelectedTab ] = useState<string>('none');
@@ -17,12 +18,8 @@ function HomePage() {
     }
 
     return (
-        <div>
-            <div>
-                <div>Dinosoar</div>
-                <Menu currentUser={currentUser} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-            </div>
-
+        <div className='home-page'>
+            <Menu currentUser={currentUser} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
             <MainContent currentUserRoles={currentUser.roles} selectedTab={selectedTab} />
             {/*<LogoutButton />*/}
         </div>
