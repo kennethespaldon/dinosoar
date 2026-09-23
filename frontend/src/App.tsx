@@ -1,5 +1,5 @@
 import './App.css';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 
 function App() {
@@ -10,8 +10,8 @@ function App() {
     }
 
     return (
-        <div>
-            <Link to='/login'>Log in</Link>
+        <div className='app-page'>
+            <Outlet />
         </div>
     );
 }

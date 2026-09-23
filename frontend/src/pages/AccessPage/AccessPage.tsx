@@ -1,9 +1,16 @@
 import AccessForm from '../../components/AccessForm/AccessForm.tsx';
 import './AccessPage.css';
 import {useState} from "react";
+import {useQueryClient} from "@tanstack/react-query";
+import {Navigate} from "react-router-dom";
 
 function AccessPage() {
     const [formMode, setFormMode] = useState('login');
+    const queryClient = useQueryClient();
+
+    if (queryClient.getQueryData(['currentUser'])) {
+        return <Navigate to='/' replace />;
+    }
 
     return (
         <div className='access-page'>

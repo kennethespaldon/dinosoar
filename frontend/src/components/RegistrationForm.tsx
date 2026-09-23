@@ -34,7 +34,7 @@ function RegistrationForm() {
         if (response.ok) {
             await userQuery.refetch();
             await csrfTokenQuery.refetch();
-            navigate('/home', { replace: true });
+            navigate('/', { replace: true });
         }
     };
 

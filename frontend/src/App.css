@@ -21,11 +21,13 @@
   --color-on-primary: #000000;
   --color-primary-container: #99D2EA;
   --color-on-primary-container: #165B79;
+  --color-on-primary-container-hover: #1d7ba6;
 
   --color-secondary: #8A9AAB;
   --color-on-secondary: #000000;
   --color-secondary-container: #C4CCD5;
   --color-on-secondary-container: #303943;
+
 
   --color-tertiary: #4F8787;
   --color-on-tertiary: #000000;
@@ -56,6 +58,42 @@
   --radius-xl-alt: 32px;
   --radius-xxl: 48px;
   --radius-full: 9999px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+
+  --typescale-display-large-size: 4.75rem;
+  --typescale-display-large-line-height: 5.3331rem;
+  --typescale-display-medium-size: 3.75rem;
+  --typescale-display-medium-line-height: 4.3331rem;
+  --typescale-display-small-size: 3rem;
+  --typescale-display-small-line-height: 3.6669rem;
+  --typescale-headline-large-size: 2.6669rem;
+  --typescale-headline-large-line-height: 3.6669rem;
+  --typescale-headline-medium-size: 2.3331rem;
+  --typescale-headline-medium-line-height: 3rem;
+  --typescale-headline-small-size: 2rem;
+  --typescale-headline-small-line-height: 2.6669rem;
+  --typescale-title-large-size: 1.8331rem;
+  --typescale-title-large-line-height: 2.3331rem;
+  --typescale-title-medium-size: 1.3331rem;
+  --typescale-title-medium-line-height: 2rem;
+  --typescale-title-small-size: 1.1669rem;
+  --typescale-title-small-line-height: 1.6669rem;
+  --typescale-body-large-size: 1.3331rem;
+  --typescale-body-large-line-height: 2rem;
+  --typescale-body-medium-size: 1.1669rem;
+  --typescale-body-medium-line-height: 1.6669rem;
+  --typescale-body-small-size: 1rem;
+  --typescale-body-small-line-height: 1.3331rem;
+  --typescale-label-large-size: 1.1669rem;
+  --typescale-label-large-line-height: 1.6669rem;
+  --typescale-label-medium-size: 1rem;
+  --typescale-label-medium-line-height: 1.3331rem;
+  --typescale-label-small-size: 0.9169rem;
+  --typescale-label-small-line-height: 1.3331rem;
 }
 
 #root {
@@ -66,4 +104,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.app-page {
+  width: 100%;
+}
+
+.app-page > div {
+  height: 100vh;
+}
+
+.hidden {
+  display: none;
+}
+
+textarea {
+  resize: none;
 }

@@ -6,11 +6,12 @@ interface TextInputProps {
     htmlFor: string,
     type: string,
     id: string,
-    state: string,
-    setState: Dispatch<React.SetStateAction<string>>
+    state: any,
+    setState: Dispatch<React.SetStateAction<any>>,
+    inputMode?: "search" | "email" | "tel" | "text" | "url" | "none" | "numeric" | "decimal" | undefined
 }
 
-function TextInput({ label, htmlFor, type, id, state, setState }: TextInputProps) {
+function TextInput({ label, htmlFor, type, id, state, setState, inputMode }: TextInputProps) {
     return (
         <div className='text-input-wrapper'>
             <label htmlFor={htmlFor} className='text-input-label'>{label}</label>
@@ -21,6 +22,7 @@ function TextInput({ label, htmlFor, type, id, state, setState }: TextInputProps
                 id={id}
                 required
                 autoComplete='off'
+                inputMode={inputMode}
                 className='text-input'
             />
         </div>

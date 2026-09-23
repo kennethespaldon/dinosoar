@@ -2,9 +2,10 @@
     backdrop-filter: blur(32px);
     background-color: #FFFFFF;
     padding: var(--ref-space-150) var(--ref-space-200) var(--ref-space-200);
-    border-radius: calc(var(--radius-sm) + var(--ref-space-200));
+    border-radius: calc(var(--radius-sm) + var(--ref-space-150));
     box-shadow: 2px 2px 12px 1px rgb(0 0 0 / 15%);
     flex-basis: 500px;
+    margin-top: 24px;
 }
 
 .access-form {
@@ -46,12 +47,12 @@ button {
     background-color: var(--color-secondary);
 }
 
-button:hover {
+.primary-btn:hover, .secondary-btn:hover {
     opacity: 0.80;
     cursor: pointer;
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 992px) {
     .access-form-wrapper {
         max-width: 400px;
     }

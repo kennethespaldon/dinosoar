@@ -19,6 +19,11 @@
     border: none;
 }
 
+.text-input[type="number"]::-webkit-inner-spin-button,
+.text-input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+}
+
 .text-input-wrapper:focus-within {
     outline: 2px solid var(--color-primary);
 }
@@ -33,6 +38,10 @@
     font-size: 12px;
     background-color: transparent;
     padding: var(--ref-space-25) 0 0 var(--ref-space-75);
+}
+
+.text-input-label:hover {
+    cursor: pointer;
 }
 
 div:has(input:focus) > label {

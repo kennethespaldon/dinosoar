@@ -1,6 +1,4 @@
 .access-page {
-    width: 100%;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +8,7 @@
 .access-page-login-title {
     position: absolute;
     top: var(--ref-space-600);
-    font-size: 64px;
+    font-size: 72px;
 }
 
 .access-page-login-title-mobile {
@@ -22,7 +20,7 @@
     color: var(--color-primary);
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 992px) {
     .hide-on-mobile {
         display: none;
     }
