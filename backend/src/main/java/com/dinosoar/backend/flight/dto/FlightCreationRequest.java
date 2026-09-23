@@ -1,6 +1,7 @@
 package com.dinosoar.backend.flight.dto;
 
 import com.dinosoar.backend.flight.actionitem.dto.ActionItemCreationRequest;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public record FlightCreationRequest(
 
         @NotNull
+        @JsonFormat(pattern = "MM-dd-yyyy")
         LocalDate date,
 
         @NotNull
