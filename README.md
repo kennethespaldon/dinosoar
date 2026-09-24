@@ -1,16 +1,22 @@
-# Dinosoar — Full-Stack Flight School Learning Management System
+# ✈️ Dinosoar
 
-Dinosoar is a full-stack flight school learning management system that helps instructors record flight lesson debriefs 
-and enables students to review their flight performance. The application provides role-based workflows for students 
-and instructors, along with secure authentication and resource management.
+Dinosoar is a full-stack flight training platform I'm building for a friend. So far, it allows flight instructors to 
+record flight lesson debriefs and students to review their performance. This is an ongoing project so more
+features will be added over time.
 
-## Features
-- Student/instructor authentication
+## 🎯 Features
+- User authentication
 - Flight lesson debriefs
-- File/resource management
 
-## Tech Stack
-### Backend
+## 💻 Tech Stack
+### 🎨 Frontend
+- React
+- TypeScript
+- React Router
+- TanStack Query
+- Zod
+
+### ⚙️ Backend
 - Java
 - Spring Boot
   - Spring MVC
@@ -18,13 +24,15 @@ and instructors, along with secure authentication and resource management.
   - Spring Security
 - PostgreSQL
 
-### Frontend
-- React
-- TypeScript
-- React Router
-- TanStack Query
-- Zod
-
-### Infrastructure
+### 🛠️ Infrastructure
 - AWS S3
 - Docker
+
+## 🗺️ Planned Features
+- File/resource management
+- Aircraft profiles
+- Add FAA regulation codes to flight lesson debriefs
+
+## 🚧 Currently Working On
+- Expanding flight lesson debrief functionality
+- Instructor dashboard
