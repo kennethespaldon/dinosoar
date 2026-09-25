@@ -1,4 +1,4 @@
-import Flights from '../../sections/Flights/Flights.tsx';
+import Flights from '../../views/Flights/Flights.tsx';
 
 const mainContentComponents = {
     ADMIN: {

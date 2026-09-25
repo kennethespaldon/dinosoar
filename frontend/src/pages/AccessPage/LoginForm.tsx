@@ -1,8 +1,8 @@
-import TextInput from "./TextInput/TextInput.tsx";
+import TextInput from "../../components/TextInput/TextInput.tsx";
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import useCurrentUserQuery from "../hooks/useCurrentUserQuery.ts";
-import useCsrfTokenQuery from "../hooks/useCsrfTokenQuery.ts";
+import useCurrentUserQuery from "../../hooks/useCurrentUserQuery.ts";
+import useCsrfTokenQuery from "../../hooks/useCsrfTokenQuery.ts";
 
 function LoginForm() {
     const [email, setEmail] = useState("");

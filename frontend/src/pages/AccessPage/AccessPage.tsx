@@ -1,4 +1,4 @@
-import AccessForm from '../../components/AccessForm/AccessForm.tsx';
+import AccessForm from './AccessForm/AccessForm.tsx';
 import './AccessPage.css';
 import {useState} from "react";
 import {useQueryClient} from "@tanstack/react-query";

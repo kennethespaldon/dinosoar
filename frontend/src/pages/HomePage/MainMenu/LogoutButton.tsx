@@ -1,6 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import useCsrfTokenQuery from '../hooks/useCsrfTokenQuery.ts';
+import useCsrfTokenQuery from '../../../hooks/useCsrfTokenQuery.ts';
 
 function LogoutButton() {
     const navigate = useNavigate();

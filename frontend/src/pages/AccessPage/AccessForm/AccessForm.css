@@ -3,9 +3,10 @@
     background-color: #FFFFFF;
     padding: var(--ref-space-150) var(--ref-space-200) var(--ref-space-200);
     border-radius: calc(var(--radius-sm) + var(--ref-space-150));
-    box-shadow: 2px 2px 12px 1px rgb(0 0 0 / 15%);
+    box-shadow: 2px 2px 12px 12px rgb(64 171 215 / 15%);
     flex-basis: 500px;
     margin-top: 24px;
+    border: 2px solid #000000;
 }
 
 .access-form {

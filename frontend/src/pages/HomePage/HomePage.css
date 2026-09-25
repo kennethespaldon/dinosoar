@@ -42,28 +42,21 @@
     display: flex;
     align-items: center;
     gap: var(--ref-space-150);
-}
 
-.main-menu-tab:hover {
-    cursor: pointer;
-}
+    &:hover {
+        cursor: pointer;
+    }
 
-.main-menu-tab:active {
-    position: relative;
-    top: 6px;
-    left: 6px;
-    box-shadow: none;
-}
+    &:active {
+        position: relative;
+        top: 6px;
+        left: 6px;
+        box-shadow: none;
+    }
 
-.main-menu-tab-selected:active {
-    position: relative;
-    top: 6px;
-    left: 6px;
-    box-shadow: none;
-}
-
-.main-menu-tab:not(.main-menu-tab-selected):hover {
-    background-color: var(--color-on-primary-container-hover);
+    &:not(.main-menu-tab-selected):hover {
+        background-color: var(--color-on-primary-container-hover);
+    }
 }
 
 .main-menu-tab-selected {
@@ -72,6 +65,13 @@
     top: 4px;
     left: 4px;
     box-shadow: 1px 2px 0 0 black;
+
+    &:active {
+        position: relative;
+        top: 6px;
+        left: 6px;
+        box-shadow: none;
+    }
 }
 
 .main-content {
@@ -121,12 +121,13 @@
 }
 
 .flight-list {
-    padding: var(--ref-space-50) var(--ref-space-600);
+    padding: var(--ref-space-50) var(--ref-space-900);
 }
 
 .flight-list-items {
     display: flex;
     flex-direction: column;
+    gap: 2px;
 }
 
 .flight-list-row {
@@ -139,7 +140,26 @@
 
     display: flex;
     justify-content: space-around;
-    padding: var(--ref-space-50) var(--ref-space-200);
+    padding: var(--ref-space-100) var(--ref-space-50);
+    border-radius: 12px;
+    border: 2px solid #000;
+
+    &:nth-of-type(even) {
+        background-color: var(--color-surface-dim);
+    }
+}
+
+.flight-list-row-header {
+    background-color: var(--color-primary);
+    color: white;
+    margin-bottom: var(--ref-space-50);
+
+    & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--ref-space-50);
+    }
 }
 
 .flight-list-row:not(.flight-list-row-header):hover {
@@ -242,6 +262,11 @@
 
 .add-flight-button {
     margin-top: auto;
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--color-primary-container);
+    }
 }
 
 .add-flight-form-buttons {
@@ -261,9 +286,4 @@
 
 .add-flight-form-add-button {
     background-color: var(--color-primary);
-}
-
-.add-flight-button:hover {
-    cursor: pointer;
-    background-color: #4F8787;
 }
